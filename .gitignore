@@ -26,3 +26,6 @@ replay_pid*
 out/
 .idea/
 data/*.real
+/aoc2024/build/
+/aoc2024/.gradle/
+/aoc2024.iml
