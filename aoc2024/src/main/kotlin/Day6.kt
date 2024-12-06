@@ -66,7 +66,7 @@ class Guard(var point: Point, var direction: Direction) {
     }
     fun move(nextVal: String) {
         if ( nextVal == "#") {
-            direction = direction.turnRight()
+            direction = direction.turnRight().turnRight()
         } else {
             point = direction.nextPoint(point)
         }

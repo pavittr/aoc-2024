@@ -12,6 +12,9 @@ class Grid(private val gridSpots: Map<Point,String>) {
     fun find(elem: String) : Point {
         return gridSpots.toList().first { it.second == elem }.first
     }
+    fun all(elem: String) : List<Point> {
+        return gridSpots.toList().filter { it.second == elem }.map{it.first}.toList()
+    }
     @Suppress("unused")
     fun printable(overrides: Map<Point, String>) : String {
         val lowestx = gridSpots.minBy { it.key.x }.key.x - 1
@@ -26,5 +29,11 @@ class Grid(private val gridSpots: Map<Point,String>) {
             k to v.sortedBy { it.first.x }
                 .joinToString("") { it.second }
         }.toList().sortedBy { it.first }.joinToString("\n") { it.second }
+    }
+
+    fun search(rootPoint: Point, direction: Direction, amount: Int): List<String> {
+        return IntRange(0,amount-1)
+            .map{ direction.nextPoint(rootPoint, it) }
+            .map { get(it) }
     }
 }
