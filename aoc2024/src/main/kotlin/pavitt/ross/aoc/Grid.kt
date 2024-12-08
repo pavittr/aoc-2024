@@ -36,4 +36,29 @@ class Grid(private val gridSpots: Map<Point,String>) {
             .map{ direction.nextPoint(rootPoint, it) }
             .map { get(it) }
     }
+
+    fun lowx() : Int {
+        return gridSpots.minBy { it.key.x }.key.x
+    }
+
+
+    fun lowy() : Int {
+        return gridSpots.minBy { it.key.y }.key.y
+    }
+    fun highx() : Int {
+        return gridSpots.maxBy { it.key.x }.key.x
+    }
+
+
+    fun highy() : Int {
+        return gridSpots.maxBy { it.key.y }.key.y
+    }
+
+    fun contains(nextPoint: Point): Boolean {
+        return gridSpots.containsKey(nextPoint)
+
+    }
+    fun toList() : List<Pair<Point, String>> {
+        return gridSpots.toList()
+    }
 }
